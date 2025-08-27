@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🪵O — Login</title>
+  <title>Open Source — Login</title>
   <!-- Fonts: Libertinus Sans for heading, Rubik for body -->
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.cdnfonts.com/css/libertinus-sans" rel="stylesheet">
@@ -40,11 +40,19 @@
       position: absolute;
       top: 22px;
       left: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
       font-family: 'Rubik', sans-serif;
-      font-weight: 400; /* no bold */
+      font-weight: 400;
       font-size: 18px;
       line-height: 1;
       user-select: none;
+    }
+    .logo img {
+      width: 24px;
+      height: 24px;
+      display: block;
     }
     .card {
       width: min(440px, 88%);
@@ -84,25 +92,22 @@
       box-shadow: 0 0 0 6px rgba(17,17,17,0.06);
     }
     .credit {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 12px;
-  color: #000;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.credit a {
-  color: blue;
-  text-decoration: underline;
-}
-
-body:hover .credit {
-  opacity: 1;
-}
-
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: #000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .credit a {
+      color: blue;
+      text-decoration: underline;
+    }
+    body:hover .credit {
+      opacity: 1;
+    }
     .action {
       width: 100%;
       padding: 14px 16px;
@@ -165,10 +170,13 @@ body:hover .credit {
 <body>
   <main class="grid" role="main">
     <section class="left" aria-labelledby="welcome-title">
-      <div class="logo" title="🪵O">🪵O</div>
+      <!-- Updated: Open Source Initiative logo -->
+      <div class="logo">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfAD3UelSsoZgX9YzuIH0Rh1XwzrvUZ9OfZQ&s">
+          </div>
       <div class="card">
         <h1 id="welcome-title">Welcome</h1>
-        <p class="sub">Sign in to continue or <span>:Sign up:</span></p>
+        <p class="sub">Sign in to continue or <span>Sign up</span></p>
         <form class="form" action="javascript:void(0)" autocomplete="off" aria-label="Login form (demo)">
           <label for="email" class="visually-hidden" aria-hidden="true" style="position:absolute;left:-9999px">Email</label>
           <input id="email" class="input" type="email" placeholder="Email address" required />
@@ -195,19 +203,24 @@ body:hover .credit {
             </button>
           </div>
           <p class="credit">
-  Credit: melancholic 
-  <a href="https://github.com/melancholic-ksm/cool-login-page-illustration-images/new/main" target="_blank">
-    https://github.com/melancholic-ksm/cool-login-page-illustration-images/new/main
-  </a>
-</p>
+            Credit:<a href="https://github.com/melancholic-ksm/cool-login-page-illustration-images" target="_blank">melancholic-ksm/github
+            </a>
+          </p>
         </form>
       </div>
     </section>
     <section class="right" aria-label="Illustration area">
       <div class="frame">
-        <img src="https://i.imgur.com/fOocexJ.png" alt="Showcase graphic" loading="lazy" />
+        <img id="login-illustration" src="" alt="Showcase graphic" loading="lazy" />
       </div>
     </section>
   </main>
+
+  <script>
+    // Random illustration between 01.png and 20.png
+    const idx = String(Math.floor(Math.random() * 20) + 1).padStart(2, "0");
+    document.getElementById("login-illustration").src =
+      `https://raw.githubusercontent.com/melancholic-ksm/cool-login-page-illustration-images/main/login-illust/${idx}.png`;
+  </script>
 </body>
 </html>
